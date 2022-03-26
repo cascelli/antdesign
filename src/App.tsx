@@ -1,4 +1,3 @@
-import "./App.css";
 import { DatePicker } from "antd";
 
 function App() {
