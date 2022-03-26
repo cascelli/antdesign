@@ -5,21 +5,21 @@ import './index.css';
 function App() {
   return (
     <div>
-      <Row>
-        <Col className='Column' span={4}>
-          Coluna 1
+      <Row gutter={8} justify={'center'} align={'middle'}>
+        <Col span={4}>
+          <div className='Column'>Coluna 1</div>
         </Col>
-        <Col className='Column' span={4}>
-          Coluna 2
+        <Col span={4}>
+          <div className='Column'>Coluna 2</div>
         </Col>
-        <Col className='Column' span={8}>
-          Coluna 3
+        <Col span={8}>
+          <div className='Column'>Coluna 3</div>
         </Col>
-        <Col className='Column' span={4}>
-          Coluna 4
+        <Col span={4}>
+          <div className='Column'>Coluna 4</div>
         </Col>
-        <Col className='Column' span={6}>
-          Coluna 5
+        <Col span={6}>
+          <div className='Column'>Coluna 5</div>
         </Col>
       </Row>
     </div>
