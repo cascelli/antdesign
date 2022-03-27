@@ -1,35 +1,27 @@
-import { Col, Row, Typography } from 'antd';
-import { useState } from 'react';
+import { Col, Row, Table } from 'antd';
+import { User, UserService } from 'danielbonifacio-sdk';
+import { useEffect, useState } from 'react';
+
 import './index.css';
 
-const { Title, Paragraph } = Typography;
-
 function App() {
-  const [str, setStr] = useState('Daniel Bonifacio');
+  const [users, setUsers] = useState<User.Summary[]>([]);
+  useEffect(() => {
+    UserService.getAllUsers().then(setUsers);
+  }, []);
 
   return (
     <div>
       <Row gutter={8} justify={'center'}>
-        <Col span={12}>
-          <Title>Título de nível 1</Title>
-          <Title level={2}>Título de nível 2</Title>
-          <Title level={3}>Título de nível 3</Title>
-          <Title level={4}>Título de nível 4</Title>
-          <Title level={5}>Título de nível 5</Title>
-        </Col>
-
-        <Col span={12}>
-          <Paragraph editable={{ onChange: setStr }}>
-            {str}
-          </Paragraph>
-          <Paragraph ellipsis={{ rows: 2 }}>
-            Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. In neque quas ratione.
-            Suscipit repudiandae mollitia rem quae id?
-            Voluptate pariatur quisquam eveniet debitis
-            reprehenderit, doloribus assumenda laborum quas
-            sapiente corporis!
-          </Paragraph>
+        <Col span={24}>
+          <Table
+            dataSource={users}
+            columns={[
+              { dataIndex: 'id', title: 'ID' },
+              { dataIndex: 'name', title: 'Nome' },
+              { dataIndex: 'email', title: 'E-mail' },
+            ]}
+          />
         </Col>
       </Row>
     </div>
